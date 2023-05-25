@@ -1,19 +1,23 @@
 #include "main.h"
 
 /**
- * _memset - fills memory with a constant byte
- * @s: the pointer to the memory area
- * @b: the byte to fill *s with
- * @n: the amount of bytes to be filled
- * Return: (s) a pointer to the memory area s
+ * _memset - fills memory
+ * @string: pointer to memory adderss
+ * @byte: byte to fill memory
+ * @number: amount of bytes to be filled by @byte
+ * Return: pointer to the memory address
  */
-char *_memset(char *s, char b, unsigned int n)
+char *_memset(char *string, char byte, unsigned int number)
 {
-	unsigned int i;
+	unsigned int index = 0;
 
-	for (i = 0; i < n; i++)
-		s[i] = b;
-	return (s);
+	while (index < number)
+	{
+		string[index] = byte;
+		index++;
+	}
+
+	return (string);
 }
 
 /**
@@ -24,9 +28,14 @@ void ffree(char **pp)
 {
 	char **a = pp;
 
-	if (!pp)
+	if (pp == NULL)
 		return;
+
 	while (*pp)
-		free(*pp++);
+	{
+		free(*pp);
+		pp++;
+	}
+
 	free(a);
 }
