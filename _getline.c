@@ -26,13 +26,15 @@ int _getline(info_t *info, char **pointer, size_t *length)
 		i = len = 0;
 
 	read = read_buf(info, buf, &len);
+	
 	if (read < 0 || (read == 0 && len == 0))
 		return (-1);
 
 	c = _strchr(buf + i, '\n');
 	k = c ? 1 + (unsigned int)(c - buf) : len;
 	new_p = _realloc(p, s, s ? s + k : k + 1);
-	if (new_p == NULL) /* MALLOC FAILURE! */
+
+	if (new_p == NULL)
 		return (p ? free(p), -1 : -1);
 
 	if (s != 0)
@@ -46,6 +48,7 @@ int _getline(info_t *info, char **pointer, size_t *length)
 
 	if (length)
 		*length = s;
+
 	*pointer = p;
 	return (s);
 }
