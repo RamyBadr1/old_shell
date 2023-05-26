@@ -2,12 +2,12 @@
 
 /**
  * clear_info - initializes info_t struct
- * @info: struct address
+ * @information: address of info_t struct in memory
  */
-void clear_info(info_t *info)
+void clear_info(info_t *information)
 {
-	info->arg = NULL;
-	info->argv = NULL;
-	info->path = NULL;
-	info->argc = 0;
+	information->arg = NULL;
+	information->argv = NULL;
+	information->path = NULL;
+	information->argc = 0;
 }

@@ -1,37 +1,41 @@
 #include "main.h"
 
 /**
- * convert_number - converter function, a clone of itoa
- * @num: number
- * @base: base
- * @flags: argument flags
- *
- * Return: string
+ * convert_number - works as itoa
+ * @number: integer
+ * @base: int
+ * @flags: flags of arguments
+ * Return: pointer to a string
  */
-char *convert_number(long int num, int base, int flags)
+char *convert_number(long int number, int base, int flags)
 {
-	static char *array;
-	static char buffer[50];
+	static char *arr;
+	static char buff[50];
 	char sign = 0;
-	char *ptr;
-	unsigned long n = num;
+	char *pointer;
+	unsigned long length = number;
 
-	if (!(flags & CONVERT_UNSIGNED) && num < 0)
+	if ((flags & CONVERT_UNSIGNED) == NULL && number < 0)
 	{
-		n = -num;
+		length = -number;
 		sign = '-';
-
 	}
-	array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
-	ptr = &buffer[49];
-	*ptr = '\0';
+
+    if(flags & CONVERT_LOWERCASE)
+        arr = "0123456789abcdef";
+    else
+        arr = "0123456789ABCDEF";
+	
+	pointer = &buff[49];
+	*pointer = '\0';
 
 	do	{
-		*--ptr = array[n % base];
-		n /= base;
-	} while (n != 0);
+		*--pointer = arr[length % base];
+		length /= base;
+	} while (length != 0);
 
-	if (sign)
-		*--ptr = sign;
-	return (ptr);
+	if (sign != NULL)
+		*--pointer = sign;
+
+	return (pointer);
 }
