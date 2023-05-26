@@ -1,21 +1,21 @@
 #include "main.h"
 
 /**
- * _putsfd - prints an input string
- * @str: the string to be printed
- * @fd: the filedescriptor to write to
- *
- * Return: the number of chars put
+ * _putsfd - print the input to stdout
+ * @string: the input
+ * @filedescriptor: filedescriptor
+ * Return: length
  */
-int _putsfd(char *str, int fd)
+int _putsfd(char *string, int filedescriptor)
 {
-	int i = 0;
+	int index;
 
-	if (!str)
-		return (0);
-	while (*str)
-	{
-		i += _putfd(*str++, fd);
-	}
-	return (i);
+	if (!string)
+    {
+        for (index = 0; *string;  index += _putfd(*string++, filedescriptor))
+        ;
+        return (index);
+    }
+	
+    return (0);
 }
