@@ -1,23 +1,23 @@
 #include "main.h"
 
 /**
- * _eputchar - writes the character c to stderr
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * _eputchar - work as eputchar function
+ * @character: char to print to stderr
+ * Return: 1 || -1
  */
-int _eputchar(char c)
+int _eputchar(char character)
 {
-	static int i;
-	static char buf[WRITE_BUF_SIZE];
+	static int index;
+	static char buffer[WRITE_BUF_SIZE];
 
-	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
+	if (character == BUF_FLUSH || index >= WRITE_BUF_SIZE)
 	{
-		write(2, buf, i);
-		i = 0;
+		write(2, buffer, index);
+		index = 0;
 	}
-	if (c != BUF_FLUSH)
-		buf[i++] = c;
+
+	if (character != BUF_FLUSH)
+		buffer[index++] = character;
+
 	return (1);
 }

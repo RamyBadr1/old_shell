@@ -1,20 +1,16 @@
 #include "main.h"
 
 /**
- * _eputs - prints an input string
- * @str: the string to be printed
- *
- * Return: Nothing
+ * _eputs - works as eputs function
+ * @string: character array to be printed
  */
-void _eputs(char *str)
+void _eputs(char *string)
 {
-	int i = 0;
+	int index;
 
-	if (!str)
-		return;
-	while (str[i] != '\0')
-	{
-		_eputchar(str[i]);
-		i++;
-	}
+	if (string != NULL)
+    {
+	    for (index = 0; string[index] != '\0'; index++)
+		    _eputchar(string[index]);
+    }
 }
