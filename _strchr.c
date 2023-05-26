@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- **_strchr - locates a character in a string
+ *_strchr - locates a character in a string
  *@s: the string to be parsed
  *@c: the character to look for
  *Return: (s) a pointer to the memory area s
