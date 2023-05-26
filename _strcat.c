@@ -1,35 +1,20 @@
 #include "main.h"
 
 /**
- * starts_with - checks if needle starts with haystack
- * @haystack: string to search
- * @needle: the substring to find
- *
- * Return: address of next char of haystack or NULL
+ * _strcat - work as strcat function
+ * @destination: the destination string
+ * @source: the source string
+ * Return: destination
  */
-char *starts_with(const char *haystack, const char *needle)
+char *_strcat(char *destination, char *source)
 {
-	while (*needle)
-		if (*needle++ != *haystack++)
-			return (NULL);
-	return ((char *)haystack);
-}
+	for (;*destination != 0; destination++)
+	;
 
-/**
- * _strcat - concatenates two strings
- * @dest: the destination buffer
- * @src: the source buffer
- *
- * Return: pointer to destination buffer
- */
-char *_strcat(char *dest, char *src)
-{
-	char *ret = dest;
+	while (*source != 0)
+		*destination++ = *source++;
 
-	while (*dest)
-		dest++;
-	while (*src)
-		*dest++ = *src++;
-	*dest = *src;
-	return (ret);
+	*destination = *source;
+
+	return (destination);
 }
