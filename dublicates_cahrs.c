@@ -1,21 +1,29 @@
 #include "main.h"
 
 /**
- * dup_chars - duplicates characters
- * @pathstr: the PATH string
- * @start: starting index
- * @stop: stopping index
- *
+ * dup_chars - duplicates chars
+ * @pathstring: string path
+ * @start: start index
+ * @end: end index
  * Return: pointer to new buffer
  */
-char *dup_chars(char *pathstr, int start, int stop)
+char *dup_chars(char *pathstring, int start, int end)
 {
-	static char buf[1024];
-	int i = 0, k = 0;
+	static char buffer[1024];
+	int index = start, index2 = 0;
 
-	for (k = 0, i = start; i < stop; i++)
-		if (pathstr[i] != ':')
-			buf[k++] = pathstr[i];
-	buf[k] = 0;
-	return (buf);
+	while (index < end)
+	{
+		if (pathstring[index] != ':')
+		{
+			index2++;
+			buffer[index2] = pathstring[index];
+		}
+			
+		index++;
+	}
+
+	buffer[index2] = 0;
+
+	return (buffer);
 }
