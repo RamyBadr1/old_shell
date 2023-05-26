@@ -8,9 +8,8 @@ void _puts(char *string)
 {
 	int index;
 
-	if (string == NULL)
+	if (string)
 		return;
-
 	for (index = 0; string[index] != '\0'; index++)
 	{
 		_putchar(string[index]);

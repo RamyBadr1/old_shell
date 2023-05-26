@@ -1,36 +1,34 @@
 #include "main.h"
 
 /**
- * _myalias - work as alias function
- * @information: Struct
- *  Return: 0
+ * _myalias - mimics the alias builtin (man alias)
+ * @info: Structure containing potential arguments. Used to maintain
+ *          constant function prototype.
+ *  Return: Always 0
  */
-int _myalias(info_t *information)
+int _myalias(info_t *info)
 {
-	int index = 1;
-	char *ptr = NULL;
-	list_t *node;
+	int i = 0;
+	char *p = NULL;
+	list_t *node = NULL;
 
-	if (information->argc == 1)
+	if (info->argc == 1)
 	{
-		node = information->alias;
-
-		for (node = NULL; node != NULL; node = node->next)
+		node = info->alias;
+		while (node)
+		{
 			print_alias(node);
-
+			node = node->next;
+		}
 		return (0);
 	}
-
-	while (information->argv[index] != NULL)
+	for (i = 1; info->argv[i]; i++)
 	{
-		ptr = _strchr(information->argv[index], '=');
-
-		if (ptr)
-			set_alias(information, information->argv[index]);
+		p = _strchr(info->argv[i], '=');
+		if (p)
+			set_alias(info, info->argv[i]);
 		else
-			print_alias(node_starts_with(information->alias, information->argv[index], '='));
-
-		index++;
+			print_alias(node_starts_with(info->alias, info->argv[i], '='));
 	}
 
 	return (0);

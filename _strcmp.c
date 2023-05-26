@@ -1,25 +1,23 @@
 #include "main.h"
 
 /**
- * _strcmp - works as strcmp function.
- * @string1: the first strang
- * @string2: the second strang
+ * _strcmp - performs lexicogarphic comparison of two strangs.
+ * @s1: the first strang
+ * @s2: the second strang
  *
  * Return: negative if s1 < s2, positive if s1 > s2, zero if s1 == s2
  */
-int _strcmp(char *string1, char *string2)
+int _strcmp(char *s1, char *s2)
 {
-	for (;*string1 != 0 && *string2 != 0; string1++)
+	while (*s1 && *s2)
 	{
-		if (*string1 != *string2)
-			return (*string1 - *string2);
-		string2++;
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		s1++;
+		s2++;
 	}
-	if (*string1 == *string2)
+	if (*s1 == *s2)
 		return (0);
-	
-	if (*string1 < *string2)
-		return (-1);
-	else 
-		return (1);
+	else
+		return (*s1 < *s2 ? -1 : 1);
 }

@@ -1,23 +1,22 @@
 #include "main.h"
 
 /**
- * build_history_list - adds a new node to history list
- * @information: Struct
- * @buffer: buffer
- * @linelength: history linelength
- * Return: (0) SUCCESS
+ * build_history_list - adds entry to a history linked list
+ * @info: Structure containing potential arguments. Used to maintain
+ * @buf: buffer
+ * @linecount: the history linecount, histcount
+ *
+ * Return: Always 0
  */
-int build_history_list(info_t *information, char *buff, int linelength)
+int build_history_list(info_t *info, char *buf, int linecount)
 {
-	list_t *node;  /* NULL */
+	list_t *node = NULL;
 
-	if (information->history != NULL)
-		node = information->history;
+	if (info->history)
+		node = info->history;
+	add_node_end(&node, buf, linecount);
 
-	add_node_end(&node, buff, linelength);
-
-	if (information->history == NULL)
-		information->history = node;
-
+	if (!info->history)
+		info->history = node;
 	return (0);
 }

@@ -1,37 +1,31 @@
 #include "main.h"
 
 /**
- * _realloc - reallocates memory
- * @pointer: pointer
- * @oldSize: old byte size
- * @newSize: new byte size
+ * _realloc - reallocates a block of memory
+ * @ptr: pointer to previous malloc'ated block
+ * @old_size: byte size of previous block
+ * @new_size: byte size of new block
+ *
  * Return: pointer to da ol'block nameen.
  */
-void *_realloc(void *pointer, unsigned int oldSize, unsigned int newSize)
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	char *p;
 
-	if (pointer == 0)
-		return (malloc(newSize));
-	else if (newSize == 0)
-		return (free(pointer), NULL);
-	else if (newSize == oldSize)
-		return (pointer);
+	if (!ptr)
+		return (malloc(new_size));
+	if (!new_size)
+		return (free(ptr), NULL);
+	if (new_size == old_size)
+		return (ptr);
 
-	p = malloc(newSize);
-
-	if (!pointer)
+	p = malloc(new_size);
+	if (!p)
 		return (NULL);
 
-	oldSize = oldSize < newSize ? oldSize : newSize;
-
-	while (oldSize)
-	{
-		p[oldSize] = ((char *)pointer)[oldSize];
-		oldSize--;
-	}
-
-	free(pointer);
-
+	old_size = old_size < new_size ? old_size : new_size;
+	while (old_size--)
+		p[old_size] = ((char *)ptr)[old_size];
+	free(ptr);
 	return (p);
 }
