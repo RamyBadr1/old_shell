@@ -1,20 +1,17 @@
 #include "main.h"
 
 /**
- * _strcat - concatenates two strings
- * @dest: the destination buffer
- * @src: the source buffer
- *
- * Return: pointer to destination buffer
+ * _strcat - work as strcat
+ * @destination: destination strig
+ * @source: source strng
+ * Return: destination
  */
-char *_strcat(char *dest, char *src)
+char *_strcat(char *destination, char *source)
 {
-	char *ret = dest;
-
-	while (*dest)
-		dest++;
-	while (*src)
-		*dest++ = *src++;
-	*dest = *src;
-	return (ret);
+	while (*destination)
+		destination++;
+	while (*source)
+		*destination++ = *source++;
+	*destination = *source;
+	return (destination);
 }
