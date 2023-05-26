@@ -1,30 +1,28 @@
 #include "main.h"
 
 /**
- * _myexit - exits the shell
- * @info: Structure containing potential arguments. Used to maintain
- * constant function prototype.
- * Return: exits with a given exit status
- * (0) if info.argv[0] != "exit"
+ * _myexit - getout of the shell
+ * @information: Struct
+ * Return: the status of exit
  */
-int _myexit(info_t *info)
+int _myexit(info_t *information)
 {
-	int exitcheck;
+	int checkexit;
 
-	if (info->argv[1]) /* If there is an exit arguement */
+	if (information->argv[1] != NULL)
 	{
-		exitcheck = _erratoi(info->argv[1]);
-		if (exitcheck == -1)
+		checkexit = _erratoi(information->argv[1]);
+		if (checkexit < -1)
 		{
-			info->status = 2;
-			print_error(info, "Illegal number: ");
-			_eputs(info->argv[1]);
+			information->status = 2;
+			print_error(information, "Illegal number: ");
+			_eputs(information->argv[1]);
 			_eputchar('\n');
 			return (1);
 		}
-		info->err_num = _erratoi(info->argv[1]);
+		information->err_num = _erratoi(information->argv[1]);
 		return (-2);
 	}
-	info->err_num = -1;
+	information->err_num = -1;
 	return (-2);
 }

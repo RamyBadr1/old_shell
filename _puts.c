@@ -3,14 +3,13 @@
 /**
  * _puts - prints an input string
  * @str: the string to be printed
- *
  * Return: Nothing
  */
 void _puts(char *str)
 {
 	int i = 0;
 
-	if (!str)
+	if (str)
 		return;
 	while (str[i] != '\0')
 	{
