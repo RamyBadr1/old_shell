@@ -1,16 +1,15 @@
 #include "main.h"
 
 /**
-* find_builtin - gets builtin command
-* @information: info struct
-* Return: (-1) command not found
+* find_builtin - finds a builtin command
+* @info: the parameter & return info struct
+*
+* Return: -1 if builtin not found
 */
-int find_builtin(info_t *information)
+int find_builtin(info_t *info)
 {
-	int index = 0; 
-	int built_in_return;
-
-	builtin_table builtintarray[] = {
+	int i, built_in_ret = -1;
+	builtin_table builtintbl[] = {
 		{"exit", _myexit},
 		{"env", _myenv},
 		{"help", _myhelp},
@@ -22,17 +21,12 @@ int find_builtin(info_t *information)
 		{NULL, NULL}
 	};
 
-	while (builtintarray[index].type)
-	{
-		if (_strcmp(information->argv[0], builtintarray[index].type) == 0)
+	for (i = 0; builtintbl[i].type; i++)
+		if (_strcmp(info->argv[0], builtintbl[i].type) == 0)
 		{
-			information->line_count++;
-			built_in_return = builtintarray[index].func(information);
-			return (built_in_return);
-		}	
-
-		index++;
-	}
-
-	return (-1);
+			info->line_count++;
+			built_in_ret = builtintbl[i].func(info);
+			break;
+		}
+	return (built_in_ret);
 }
