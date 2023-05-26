@@ -1,18 +1,17 @@
 #include "main.h"
 
 /**
-* _strchr - work as strchr function
-* @string: the string
-* @c: the character to search for
-* Return: a pointer to memory address or null
-*/
-char *_strchr(char *string, char character)
+ **_strchr - locates a character in a string
+ *@s: the string to be parsed
+ *@c: the character to look for
+ *Return: (s) a pointer to the memory area s
+ */
+char *_strchr(char *s, char c)
 {
 	do {
-		if (*string == character)
-			return (string);
-			
-	} while (*string++ != '\0');
+		if (*s == c)
+			return (s);
+	} while (*s++ != '\0');
 
 	return (NULL);
 }

@@ -1,27 +1,24 @@
 #include "main.h"
 
 /**
- * _putfd - xxxxxxxxxxxxxxxx
- * @character: print char
- * @filedescriptor: fd to write to
- * Return: 1 || -1
+ * _putfd - writes the character c to given fd
+ * @c: The character to print
+ * @fd: The filedescriptor to write to
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
  */
-int _putfd(char character, int filedescriptor)
+int _putfd(char c, int fd)
 {
-	static int index;
-	static char buffer[WRITE_BUF_SIZE];
+	static int i;
+	static char buf[WRITE_BUF_SIZE];
 
-	if (character == BUF_FLUSH || index >= WRITE_BUF_SIZE)
+	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 	{
-		write(filedescriptor, buffer, index);
-		index = 0;
+		write(fd, buf, i);
+		i = 0;
 	}
-
-	if (character != BUF_FLUSH)
-    {
-        index++;
-        buffer[index] = character;
-    }
-		
+	if (c != BUF_FLUSH)
+		buf[i++] = c;
 	return (1);
 }

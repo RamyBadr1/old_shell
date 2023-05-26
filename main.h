@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include <signal.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
@@ -233,11 +232,11 @@ int replace_alias(info_t *);
 int replace_vars(info_t *);
 int replace_string(char **, char *);
 
-ssize_t input_buf(info_t *info, char **buf, size_t *len);
-ssize_t read_buf(info_t *info, char *buf, size_t *i);
+ssize_t input_buf(info_t *, char **, size_t *);
+ssize_t read_buf(info_t *, char *, size_t *);
 
-int print_alias(list_t *node);
-int set_alias(info_t *info, char *str);
-int unset_alias(info_t *info, char *str);
+int print_alias(list_t *);
+int set_alias(info_t *, char *);
+int unset_alias(info_t *, char *);
 
 #endif

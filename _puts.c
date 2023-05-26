@@ -1,18 +1,20 @@
 #include "main.h"
 
 /**
- * _puts - prints the user input
- * @string: a char array to be printed
+ * _puts - prints an input string
+ * @str: the string to be printed
+ *
+ * Return: Nothing
  */
-void _puts(char *string)
+void _puts(char *str)
 {
-	int index;
+	int i = 0;
 
-	if (string == NULL)
+	if (!str)
 		return;
-
-	for (index = 0; string[index] != '\0'; index++)
+	while (str[i] != '\0')
 	{
-		_putchar(string[index]);
+		_putchar(str[i]);
+		i++;
 	}
 }
