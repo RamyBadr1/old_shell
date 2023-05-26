@@ -1,20 +1,20 @@
 #include "main.h"
 
 /**
- * _mysetenv - Initialize a new env variable
- * @information: Struct
- *  Return: 0
+ * _mysetenv - Initialize a new environment variable,
+ *             or modify an existing one
+ * @info: Structure containing potential arguments. Used to maintain
+ *        constant function prototype.
+ *  Return: Always 0
  */
-int _mysetenv(info_t *information)
+int _mysetenv(info_t *info)
 {
-    if (_setenv(information, information->argv[1], information->argv[2]))
-		return (0);
-        
-	if (information->argc != 3)
+	if (info->argc != 3)
 	{
 		_eputs("Incorrect number of arguements\n");
 		return (1);
 	}
-
+	if (_setenv(info, info->argv[1], info->argv[2]))
+		return (0);
 	return (1);
 }

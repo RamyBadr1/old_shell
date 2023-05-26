@@ -1,23 +1,23 @@
 #include "main.h"
 
 /**
- * _getenv - get an environ variable value
- * @information: Struct
- * @varname: env var name
- * Return: something
+ * _getenv - gets the value of an environ variable
+ * @info: Structure containing potential arguments. Used to maintain
+ * @name: env var name
+ *
+ * Return: the value
  */
-
-char *_getenv(info_t *information, const char *varname)
+char *_getenv(info_t *info, const char *name)
 {
-	list_t *node = information->env;
-	char *ptr;
+	list_t *node = info->env;
+	char *p;
 
-	for (;node ; node = node->next)
+	while (node)
 	{
-		ptr = starts_with(node->str, varname);
-
-		if (ptr != NULL && *ptr != 0)
-			return (ptr);
+		p = starts_with(node->str, name);
+		if (p && *p)
+			return (p);
+		node = node->next;
 	}
 	return (NULL);
 }

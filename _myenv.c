@@ -1,12 +1,13 @@
 #include "main.h"
 
 /**
- * _myenv - print out current env to stdout
- * @information: Struct
- * Return: 0
+ * _myenv - prints the current environment
+ * @info: Structure containing potential arguments. Used to maintain
+ *          constant function prototype.
+ * Return: Always 0
  */
-int _myenv(info_t *information)
+int _myenv(info_t *info)
 {
-	print_list_str(information->env);
+	print_list_str(info->env);
 	return (0);
 }

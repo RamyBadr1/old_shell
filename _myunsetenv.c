@@ -1,25 +1,22 @@
 #include "main.h"
 
 /**
- * _myunsetenv - delete env var
- * @information: Structure
+ * _myunsetenv - Remove an environment variable
+ * @info: Structure containing potential arguments. Used to maintain
+ *        constant function prototype.
  * Return: Always 0
  */
-int _myunsetenv(info_t *information)
+int _myunsetenv(info_t *info)
 {
-	int index = 1;
+	int i;
 
-	if (information->argc == 1)
+	if (info->argc == 1)
 	{
 		_eputs("Too few arguements.\n");
 		return (1);
 	}
-
-	while (index <= information->argc) 
-    {
-        _unsetenv(information, information->argv[index]);
-        index++;
-    }
+	for (i = 1; i <= info->argc; i++)
+		_unsetenv(info, info->argv[i]);
 
 	return (0);
 }
